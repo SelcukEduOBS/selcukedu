@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.Ü. Öğrenci Bilgi Sistemi - Giriş</title>
+    <!-- Bootstrap 3.4.1 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Font Awesome 4.7.0 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="custom.css">
+</head>
+<body class="login-body">
+
+    <div class="login-container">
+        <div class="login-box">
+            
+            <!-- Top overlapping icon -->
+            <div class="login-avatar-container">
+                <i class="fa fa-key" style="color: #fff; font-size: 40px; margin-top: 5px;"></i>
+            </div>
+            
+            <!-- University Logo -->
+            <div class="login-logo">
+                <img src="https://obis1.selcuk.edu.tr/Content/selcuk_logo.png" alt="Selçuk Üniversitesi Logo">
+            </div>
+
+            <!-- Title -->
+            <div class="login-title">
+                Lisans / Önlisans Öğrenci Girişi
+            </div>
+
+            <!-- Error message container -->
+            <div id="errorAlert" class="alert alert-danger" style="display: none; margin-top: 15px; padding: 10px; font-size: 13px; text-align: left;">
+                <i class="fa fa-exclamation-triangle"></i> <span id="errorMessage">Hatalı Kullanıcı Adı veya Şifre!</span>
+            </div>
+
+            <!-- Form -->
+            <form class="login-form" id="loginForm" action="anasayfa.html" method="GET">
+                <div class="form-group">
+                    <i class="fa fa-user"></i>
+                    <input type="text" class="form-control" placeholder="Öğrenci No" required id="username" value="">
+                </div>
+
+                <div class="form-group">
+                    <i class="fa fa-lock"></i>
+                    <input type="password" class="form-control" placeholder="Şifre" required id="password" value="">
+                </div>
+
+                <!-- Captcha Area -->
+                <div class="captcha-container">
+                    <div class="captcha-img" id="captchaVal">48B9</div>
+                    <button type="button" class="btn btn-captcha-refresh" onclick="generateCaptcha()" title="Güvenlik kodunu yenile">
+                        <i class="fa fa-refresh"></i>
+                    </button>
+                </div>
+
+                <div class="form-group">
+                    <i class="fa fa-shield"></i>
+                    <input type="text" class="form-control" placeholder="Güvenlik Kodu" required id="captchaInput" value="48B9">
+                </div>
+
+                <button type="submit" class="btn btn-login">GİRİŞ</button>
+            </form>
+
+            <!-- Links -->
+            <a href="#" class="login-forgot-link">Şifremi Unuttum</a>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        function generateCaptcha() {
+            var chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            var stringLength = 4;
+            var randomstring = '';
+            for (var i=0; i<stringLength; i++) {
+                var rnum = Math.floor(Math.random() * chars.length);
+                randomstring += chars.substring(rnum,rnum+1);
+            }
+            document.getElementById("captchaVal").innerText = randomstring;
+            document.getElementById("captchaInput").value = randomstring;
+        }
+
+        // Handle login verification
+        document.getElementById("loginForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            
+            var usernameInput = document.getElementById("username").value.trim();
+            var passwordInput = document.getElementById("password").value;
+            var captchaInput = document.getElementById("captchaInput").value.trim().toUpperCase();
+            var captchaActual = document.getElementById("captchaVal").innerText.trim().toUpperCase();
+            
+            var errorAlert = document.getElementById("errorAlert");
+            var errorMessage = document.getElementById("errorMessage");
+            
+            // Check Captcha
+            if (captchaInput !== captchaActual) {
+                errorMessage.innerText = "Güvenlik kodu hatalı!";
+                errorAlert.style.display = "block";
+                generateCaptcha();
+                return;
+            }
+            
+            // Check Username & Password
+            if (usernameInput === "200501244" && passwordInput === "mikailobis4633") {
+                errorAlert.style.display = "none";
+                window.location.href = "anasayfa.html";
+            } else {
+                errorMessage.innerText = "Hatalı Kullanıcı Adı veya Şifre!";
+                errorAlert.style.display = "block";
+                document.getElementById("password").value = "";
+                generateCaptcha();
+            }
+        });
+    </script>
+</body>
+</html>
