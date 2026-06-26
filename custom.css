@@ -476,3 +476,47 @@ body {
     color: red !important;
     font-weight: bold;
 }
+
+/* 6. Mobile Responsive Adjustments */
+@media (max-width: 767px) {
+    /* Prevent sidebar menu from collapsing on mobile */
+    .sidebar.h-sidebar.navbar-collapse.collapse {
+        display: block !important;
+        height: auto !important;
+        padding-bottom: 0;
+        overflow: visible !important;
+    }
+    
+    /* Make the horizontal menu scrollable on mobile */
+    .sidebar.h-sidebar {
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        border-bottom: 1px solid #ddd;
+    }
+    
+    /* Hide the sidebar logo amblem on mobile to save space */
+    .sidebar-shortcuts {
+        display: none !important;
+    }
+    
+    /* Align nav items in a single non-wrapping row */
+    .nav-list {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .nav-list > li {
+        flex: 0 0 auto !important;
+        display: inline-block !important;
+        float: none !important;
+    }
+    
+    .nav-list > li > a {
+        padding: 12px 14px !important;
+    }
+}
+
