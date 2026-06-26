@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>S.Ü. Öğrenci Bilgi Sistemi - Anasayfa</title>
+    <!-- Bootstrap 3.4.1 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <!-- Font Awesome 4.7.0 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="custom.css">
+</head>
+<body class="no-skin">
+
+    <!-- Navbar -->
+    <div id="navbar" class="navbar navbar-default navbar-collapse h-navbar">
+        <div class="navbar-container" id="navbar-container">
+            <div class="navbar-header pull-left">
+                <a href="anasayfa.html" class="navbar-brand">
+                    <small>Selçuk Üniversitesi Öğrenci Bilgi Sistemi</small>
+                </a>
+            </div>
+
+            <div class="navbar-buttons navbar-header pull-right collapse navbar-collapse" role="navigation">
+                <ul class="nav ace-nav">
+                    <li class="light-blue dropdown dropdown-modal">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
+                            <img class="nav-user-photo" src="data:image/gif;base64,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" alt="MİKAİL ORAK" height="35" style="border-radius: 50%; margin-right: 5px;">
+                            <b>MİKAİL ORAK</b>
+                            <i class="ace-icon fa fa-caret-down"></i>
+                        </a>
+                        <ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                            <li><a href="#"><i class="ace-icon fa fa-lock"></i> Şifre Değiştir</a></li>
+                            <li class="divider"></li>
+                            <li><a href="login.html"><i class="ace-icon fa fa-power-off"></i> Çıkış</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="main-container" id="main-container">
+        
+        <!-- Sidebar Navigation -->
+        <div id="sidebar" class="sidebar h-sidebar navbar-collapse collapse">
+            <div class="sidebar-shortcuts">
+                <img src="https://obis1.selcuk.edu.tr/Content/Amblem.png" height="50" alt="Selçuk Logo Amblem">
+            </div>
+            <ul class="nav nav-list">
+                <li class="active">
+                    <a href="anasayfa.html">
+                        <i class="fa fa-home"></i>
+                        <span class="menu-text">Anasayfa</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="onay_takip.html">
+                        <i class="fa fa-check-square-o"></i>
+                        <span class="menu-text">Onay Takip</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="son_yil_notlari.html">
+                        <i class="fa fa-list"></i>
+                        <span class="menu-text">Son Yıl Notları</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="not_durumu.html">
+                        <i class="fa fa-table"></i>
+                        <span class="menu-text">Not Durumu</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="transkript.html">
+                        <i class="fa fa-list-alt"></i>
+                        <span class="menu-text">Transkript</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="harc_durumu.html">
+                        <i class="fa fa-credit-card"></i>
+                        <span class="menu-text">Harç Durumu</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="sinav_tarihleri.html">
+                        <i class="fa fa-calendar"></i>
+                        <span class="menu-text">Sınav Tarihleri</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="http://ue.selcuk.edu.tr/" target="_blank">
+                        <i class="fa fa-laptop"></i>
+                        <span class="menu-text">Uzaktan Eğitim</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://uzaktansinav.selcuk.edu.tr/" target="_blank">
+                        <i class="fa fa-laptop"></i>
+                        <span class="menu-text">Uzaktan Sınav</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ykk_kararlari.html">
+                        <i class="fa fa-paperclip"></i>
+                        <span class="menu-text">YKK Kararı</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="container-fluid">
+                
+                <!-- Blue Link Banner -->
+                <div class="page-title-banner">
+                    <a href="anasayfa.html">ANASAYFA</a>
+                </div>
+
+                <div class="row">
+                    <!-- Left Column: Profile Card -->
+                    <div class="col-md-7 col-xs-12">
+                        <div class="row">
+                            <div class="col-sm-3 text-center" style="margin-bottom: 15px;">
+                                <span class="profile-picture">
+                                    <img id="avatar" class="img-responsive" alt="MİKAİL ORAK" src="data:image/gif;base64,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">
+                                </span>
+                            </div>
+                            <div class="col-sm-9 col-xs-12" style="margin-bottom: 15px;">
+                                <div class="profile-user-info profile-user-info-striped">
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name">Öğrenci No:</div>
+                                        <div class="profile-info-value"><span id="username">200501244</span></div>
+                                    </div>
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name">Adı Soyadı:</div>
+                                        <div class="profile-info-value">MİKAİL ORAK</div>
+                                    </div>
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name">Fakülte:</div>
+                                        <div class="profile-info-value">
+                                            <i class="fa fa-map-marker text-warning"></i> HUKUK FAKÜLTESİ(İ.Ö)
+                                        </div>
+                                    </div>
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name">Bölüm:</div>
+                                        <div class="profile-info-value">
+                                            <i class="fa fa-map-marker text-warning"></i> HUKUK FAKÜLTESİ (İ.Ö)
+                                        </div>
+                                    </div>
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name">Danışman:</div>
+                                        <div class="profile-info-value">
+                                            <i class="fa fa-user text-warning"></i> Arş.Gör. EMSALGÜL DOĞAN
+                                        </div>
+                                    </div>
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name">Sınıf:</div>
+                                        <div class="profile-info-value">4. Sınıf</div>
+                                    </div>
+                                    <div class="profile-info-row">
+                                        <div class="profile-info-name">Eposta:</div>
+                                        <div class="profile-info-value">200501244@ogr.selcuk.edu.tr</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Advisor email row -->
+                        <div class="profile-user-info profile-user-info-striped" style="margin-top: 20px;">
+                            <div class="profile-info-row">
+                                <div class="profile-info-name">Danışman İletişim:</div>
+                                <div class="profile-info-value">
+                                    <a class="btn btn-sm btn-primary" target="_blank" href="https://ogrposta.selcuk.edu.tr/?app=mail&view=compose&to=emsalguldogan@gmail.com">
+                                        <i class="fa fa-envelope"></i> Danışmanıma Mail At
+                                    </a>
+                                    <p style="margin-top: 5px; font-style: italic; font-size: 11px;">Öğrenci postanız mevcut tarayıcınızda açık ise otomatik olarak bilgileri doldurulmuş mail yazma ekranını açar.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Announcements -->
+                    <div class="col-md-5 col-xs-12">
+                        <div class="profile-user-info profile-user-info-striped" style="margin-bottom: 15px;">
+                            <div class="profile-info-row">
+                                <div class="text-center" style="background-color:#EDF3F4; color:#336199; width:100%; font-weight:bold; padding:8px;">
+                                    DUYURU
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- O365 Details Panel -->
+                        <div class="panel panel-default" style="padding: 15px;">
+                            <h4 style="font-weight: bold; font-size: 14px; margin-top: 0; border-bottom: 1px solid #eee; padding-bottom: 10px;">
+                                Microsoft Office 365 ve Microsoft Teams Hesap Bilgileriniz
+                            </h4>
+
+                            <div class="alert alert-success">
+                                <div><b>E-posta:</b> 200501244@ogr.selcuk.edu.tr</div>
+                                <div style="margin-top: 5px;"><b>Geçici Parola:</b> Parolanızı unuttuysanız portal.office.com üzerinden şifre hatırlatma adımlarını izleyiniz, sorun devam ederse bimdestek@selcuk.edu.tr adresine mail atınız.</div>
+                                <p style="margin-top: 10px; font-size: 11px;">
+                                    <a href="https://portal.office.com" target="_blank">portal.office.com</a> · 
+                                    <a href="https://ogrposta.selcuk.edu.tr/" target="_blank">ogrposta.selcuk.edu.tr</a>
+                                </p>
+                            </div>
+
+                            <!-- Read-only inputs -->
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label style="font-size: 11px;">E-posta</label>
+                                    <input class="form-control input-sm" value="200501244@ogr.selcuk.edu.tr" readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label style="font-size: 11px;">TC Kimlik No</label>
+                                    <input class="form-control input-sm" value="21425132954" readonly>
+                                </div>
+                                <div class="col-md-4">
+                                    <label style="font-size: 11px;">Ad Soyad</label>
+                                    <input class="form-control input-sm" value="MİKAİL ORAK" readonly>
+                                </div>
+                            </div>
+
+                            <!-- Action buttons -->
+                            <div style="margin-top: 15px;">
+                                <button type="button" class="btn btn-info btn-sm" onclick="alert('Lisansınız aktif durumda.')">Mevcut Lisansımı Kontrol Et</button>
+                                <button type="button" class="btn btn-default btn-sm" onclick="alert('Şifre sıfırlama talebi gönderildi.')">Şifremi Sıfırla / E-posta Gönder</button>
+                            </div>
+                        </div>
+
+                        <!-- Faculty announcements -->
+                        <div class="profile-user-info profile-user-info-striped" style="margin-top: 20px;">
+                            <div class="profile-info-row">
+                                <div class="profile-info-value text-center" style="background-color:#EDF3F4; color:#336199; font-weight: bold; width: 100%;">
+                                    FAKÜLTE DUYURULARI
+                                </div>
+                            </div>
+                            <div class="profile-info-row">
+                                <div class="profile-info-name" style="width: 150px; font-weight: normal; text-align: left; justify-content: flex-start;">
+                                    21 Ekim, 2024
+                                </div>
+                                <div class="profile-info-value">
+                                    "Banka hesaplarınıza ait şifre ve bilgileri para karşılığında kimseyle paylaşmayın! Başkasının suçuna ortak olmayın! Aksi takdirde sorumlu tutulacağınızı unutmayın!"
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-inner">
+                <div class="footer-content">
+                    <a href="http://www.selcuk.edu.tr/bilgi_islem/tr" target="_blank">
+                        <span>S.Ü. Bilgi İşlem Daire Başkanlığı ©2025</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Green Crescent Posters Modal (Yeşilay Afişleri) -->
+    <div id="posterModalObis" style="display: flex;">
+        <div class="poster-modal-box">
+            <img id="posterImageObis" class="poster-img" src="https://obis1.selcuk.edu.tr/Content/posters/alkol_bagimliligi_kucuk.jpg" alt="Bilgilendirme Afişi">
+
+            <div class="poster-info">
+                <span id="posterCounterText">1 / 4. afiş</span>
+                <br>
+                <span id="posterTimerText" class="text-danger">Devam etmek için kalan süre: 5 saniye</span>
+            </div>
+
+            <div class="poster-buttons">
+                <button id="btnPrevPoster" type="button" class="btn btn-default btn-sm" disabled>Önceki</button>
+                <button id="btnNextPoster" type="button" class="btn btn-primary btn-sm poster-close-disabled" disabled>
+                    Sonraki
+                </button>
+                <button id="btnClosePoster" type="button" class="btn btn-danger btn-sm poster-close-disabled" disabled>
+                    Kapat
+                </button>
+            </div>
+
+            <div style="margin-top:8px;">
+                <label style="font-weight:normal; font-size: 12px;">
+                    <input type="checkbox" id="chkDontShowAgain">
+                    Bu bilgilendirmeyi tekrar gösterme
+                </label>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script>
+        // Yeşilay Bilgilendirme Afişleri Logic
+        var posters = [
+            "https://obis1.selcuk.edu.tr/Content/posters/alkol_bagimliligi_kucuk.jpg",
+            "https://obis1.selcuk.edu.tr/Content/posters/madde_bagimliligi_kucuk.jpg",
+            "https://obis1.selcuk.edu.tr/Content/posters/teknoloji_bagimliligi_kucuk.jpg",
+            "https://obis1.selcuk.edu.tr/Content/posters/tutun_bagimliligi_kucuk.jpg"
+        ];
+
+        var currentPosterIndex = 0;
+        var secondsLeft = 5;
+        var timer = null;
+
+        function loadPoster(index) {
+            currentPosterIndex = index;
+            secondsLeft = 5;
+
+            $("#posterImageObis").attr("src", posters[currentPosterIndex]);
+            $("#posterCounterText").text((currentPosterIndex + 1) + " / " + posters.length + ". afiş");
+            
+            // Disable buttons during countdown
+            $("#btnPrevPoster").prop("disabled", currentPosterIndex === 0);
+            $("#btnNextPoster").prop("disabled", true).addClass("poster-close-disabled");
+            $("#btnClosePoster").prop("disabled", true).addClass("poster-close-disabled");
+
+            if (timer) {
+                clearInterval(timer);
+            }
+
+            updateTimerText();
+
+            timer = setInterval(function () {
+                secondsLeft--;
+                updateTimerText();
+
+                if (secondsLeft <= 0) {
+                    clearInterval(timer);
+                    
+                    // Enable next or close button
+                    if (currentPosterIndex < posters.length - 1) {
+                        $("#btnNextPoster").prop("disabled", false).removeClass("poster-close-disabled");
+                    } else {
+                        $("#btnClosePoster").prop("disabled", false).removeClass("poster-close-disabled");
+                    }
+                }
+            }, 1000);
+        }
+
+        function updateTimerText() {
+            if (secondsLeft > 0) {
+                $("#posterTimerText").html("Devam etmek için kalan süre: <strong class='text-danger'>" + secondsLeft + "</strong> saniye").removeClass("text-success").addClass("text-danger");
+            } else {
+                $("#posterTimerText").text("Bu afiş için zorunlu görüntüleme süresi tamamlandı.").removeClass("text-danger").addClass("text-success");
+            }
+        }
+
+        $("#btnNextPoster").on("click", function () {
+            if (currentPosterIndex < posters.length - 1) {
+                loadPoster(currentPosterIndex + 1);
+            }
+        });
+
+        $("#btnPrevPoster").on("click", function () {
+            if (currentPosterIndex > 0) {
+                loadPoster(currentPosterIndex - 1);
+            }
+        });
+
+        $("#btnClosePoster").on("click", function () {
+            $("#posterModalObis").fadeOut(300);
+        });
+
+        // Initialize modal on load
+        $(document).ready(function() {
+            loadPoster(0);
+        });
+    </script>
+</body>
+</html>
